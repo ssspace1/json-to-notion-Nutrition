@@ -2,15 +2,10 @@
     "name": "alltasks-uploader",
     "version": "1.0.0",
     "scripts": {
-      "dev": "next dev",
-      "build": "next build",
-      "start": "next start"
+      "start": "vercel dev"
     },
     "dependencies": {
-      "@notionhq/client": "^2.2.7",
-      "next": "13.0.0",
-      "react": "18.2.0",
-      "react-dom": "18.2.0"
+      "@notionhq/client": "^2.2.7"
     }
   }
   
