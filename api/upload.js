@@ -1,17 +1,17 @@
-import { NextResponse } from 'next/server';
 import { Client } from "@notionhq/client";
 
-export async function POST(request) {
-  const notion = new Client({ auth: process.env.NOTION_TOKEN });
-  const databaseId = process.env.NOTION_DATABASE_ID;
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({error: "Method Not Allowed"});
+  }
 
   try {
-    const body = await request.json();
+    const notion = new Client({ auth: process.env.NOTION_TOKEN });
+    const databaseId = process.env.NOTION_DATABASE_ID;
+    const body = req.body; // JSONパースはNext.jsが自動で行う
 
-    // bodyはJSON配列を想定
     for (const item of body) {
       const { ALL_Task, 状態, Priority, 日付, memo, リソース } = item;
-
       await notion.pages.create({
         parent: { database_id: databaseId },
         properties: {
@@ -37,9 +37,9 @@ export async function POST(request) {
       });
     }
 
-    return NextResponse.json({ status: 'success' }, { status: 200 });
+    res.status(200).json({ status: "success" });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: 'Failed to add pages' }, { status: 500 });
+    res.status(500).json({ error: 'Failed to add pages' });
   }
 }
