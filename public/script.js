@@ -1,5 +1,25 @@
-document.getElementById('submitBtn').addEventListener('click', async () => {
+document.getElementById('toggleBtn').addEventListener('click', () => {
+    const instructions = document.getElementById('instructions');
+    if (instructions.style.display === 'none' || instructions.style.display === '') {
+      instructions.style.display = 'block';
+      document.getElementById('toggleBtn').textContent = '▲ 閉じる';
+    } else {
+      instructions.style.display = 'none';
+      document.getElementById('toggleBtn').textContent = '▼ 詳細';
+    }
+  });
+  
+  document.getElementById('clearBtn').addEventListener('click', () => {
+    document.getElementById('jsonInput').value = '';
+  });
+  
+  document.getElementById('submitBtn').addEventListener('click', async () => {
     const jsonText = document.getElementById('jsonInput').value.trim();
+  
+    if (!jsonText) {
+      alert("JSONが空です。");
+      return;
+    }
   
     try {
       const response = await fetch('/api/upload', {
@@ -11,6 +31,7 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
       const result = await response.json();
       if (response.ok) {
         alert("データを登録しました！");
+        document.getElementById('jsonInput').value = '';
       } else {
         alert("エラーが発生しました: " + result.error);
       }

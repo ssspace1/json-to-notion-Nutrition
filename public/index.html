@@ -4,14 +4,102 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ALL_Task アップローダー</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    .container {
+      padding: 10px;
+      max-width: 300px;
+      margin: auto;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+    }
+    h1 {
+      font-size: 16px;
+      margin: 0 0 5px 0;
+      text-align: center;
+    }
+    .toggle-instructions {
+      display: block;
+      text-align: center;
+      margin-bottom: 5px;
+      font-size: 12px;
+      color: #0070f3;
+      cursor: pointer;
+      user-select: none;
+    }
+    .instructions {
+      font-size: 12px;
+      margin-bottom: 5px;
+      display: none;
+      line-height: 1.4;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      font-size: 12px;
+      box-sizing: border-box;
+    }
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+    }
+    button {
+      background-color: #0070f3;
+      color: #fff;
+      border: none;
+      padding: 4px 8px;
+      font-size: 12px;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005bb5;
+    }
+    .info {
+      font-size: 10px;
+      color: #555;
+      margin-top: 5px;
+      text-align: center;
+    }
+  </style>
 </head>
-<body style="padding:20px; background-color:#f0f0f0; font-family:sans-serif;">
-  <h1>ALL_Task アップローダー</h1>
-  <p>下のテキストボックスにJSONを貼り付けて、「送信」ボタンを押してください。</p>
-  <textarea id="jsonInput" style="width:100%; height:200px;"></textarea>
-  <br><br>
-  <button id="submitBtn">送信</button>
-  <p>※Notionデータベースに自動で反映されます。</p>
+<body>
+  <div class="container">
+    <h1>ALL_Task アップローダー</h1>
+    <div class="toggle-instructions" id="toggleBtn">▼ 詳細</div>
+    <div class="instructions" id="instructions">
+      JSON形式のデータを下のテキストボックスに貼り付けて、「送信」でNotionデータベースに登録します。<br>
+      例：
+      <pre style="font-size:10px; background:#f0f0f0; padding:2px; border-radius:2px;">
+[
+  {
+    "ALL_Task": "今日やること1",
+    "状態": "★今日のメイン★",
+    "Priority": "★★★★★",
+    "日付": "2024-12-16",
+    "memo": "メモ例",
+    "リソース": 3
+  }
+]
+      </pre>
+    </div>
+    <textarea id="jsonInput" placeholder='[{"ALL_Task":"タスク名",...}]'></textarea>
+    <div class="button-group">
+      <button id="clearBtn">クリア</button>
+      <button id="submitBtn">送信</button>
+    </div>
+    <div class="info">Notionデータベースに自動反映</div>
+  </div>
+  
   <script src="script.js"></script>
 </body>
 </html>
