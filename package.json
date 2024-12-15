@@ -7,11 +7,10 @@
       "start": "next start"
     },
     "dependencies": {
-    "@notionhq/client": "^2.2.7",
-    "next": "13.4.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+      "@notionhq/client": "^2.2.7",
+      "next": "13.0.0",
+      "react": "18.2.0",
+      "react-dom": "18.2.0"
     }
-
   }
   
