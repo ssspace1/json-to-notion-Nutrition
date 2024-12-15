@@ -1,5 +1,5 @@
 document.getElementById('submitBtn').addEventListener('click', async () => {
-    const jsonText = document.getElementById('jsonInput').value;
+    const jsonText = document.getElementById('jsonInput').value.trim();
   
     try {
       const response = await fetch('/api/upload', {
@@ -15,6 +15,7 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
         alert("エラーが発生しました: " + result.error);
       }
     } catch (err) {
+      console.error(err);
       alert("ネットワークエラーが発生しました");
     }
   });

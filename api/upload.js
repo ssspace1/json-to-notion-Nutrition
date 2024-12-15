@@ -1,41 +1,40 @@
-import { Client } from "@notionhq/client";
+const { Client } = require('@notionhq/client');
 
-export default async function handler(req, res) {
-  // POST以外は拒否
+module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: "Method Not Allowed" });
+  }
+
+  // リクエストボディを手動で読み込む
+  let bodyData = [];
+  for await (const chunk of req) {
+    bodyData.push(chunk);
+  }
+  bodyData = Buffer.concat(bodyData).toString();
+
+  let data;
+  try {
+    data = JSON.parse(bodyData);
+  } catch (e) {
+    return res.status(400).json({ error: "Invalid JSON" });
   }
 
   const notion = new Client({ auth: process.env.NOTION_TOKEN });
   const databaseId = process.env.NOTION_DATABASE_ID;
 
   try {
-    const body = req.body; // fetch時にapplication/jsonを指定していれば自動でパースされます
-
-    for (const item of body) {
+    for (const item of data) {
       const { ALL_Task, 状態, Priority, 日付, memo, リソース } = item;
 
       await notion.pages.create({
         parent: { database_id: databaseId },
         properties: {
-          "ALL_Task": {
-            title: [{ type: "text", text: { content: ALL_Task } }]
-          },
-          "状態": {
-            select: { name: 状態 }
-          },
-          "Priority": {
-            select: { name: Priority }
-          },
-          "日付": {
-            date: { start: 日付 }
-          },
-          "memo": {
-            rich_text: [{ type: "text", text: { content: memo } }]
-          },
-          "リソース": {
-            number: リソース
-          }
+          "ALL_Task": { title: [{ type: "text", text: { content: ALL_Task } }] },
+          "状態": { select: { name: 状態 } },
+          "Priority": { select: { name: Priority } },
+          "日付": { date: { start: 日付 } },
+          "memo": { rich_text: [{ type: "text", text: { content: memo } }] },
+          "リソース": { number: リソース }
         }
       });
     }
@@ -45,4 +44,4 @@ export default async function handler(req, res) {
     console.error(error);
     res.status(500).json({ error: "Failed to add pages" });
   }
-}
+};
