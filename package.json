@@ -1,12 +1,8 @@
 {
     "name": "alltasks-uploader",
     "version": "1.0.0",
-    "scripts": {
-      "start": "vercel dev"
-    },
     "dependencies": {
-      "@notionhq/client": "^2.2.7",
-      "@vercel/node": "latest"
+      "@notionhq/client": "^2.2.7"
     }
   }
   
