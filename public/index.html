@@ -8,79 +8,101 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
-      background-color: #f9f9f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f2f2f2;
       font-size: 14px;
       box-sizing: border-box;
+      color: #333;
     }
     .container {
       padding: 10px;
-      max-width: 300px;
-      margin: auto;
+      max-width: 280px;
+      margin: 10px auto;
       border: 1px solid #ccc;
-      border-radius: 4px;
+      border-radius: 2px;
       background: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     h1 {
-      font-size: 16px;
-      margin: 0 0 5px 0;
+      font-size: 14px;
+      margin: 0 0 8px 0;
       text-align: center;
+      font-weight: normal;
+      color: #000;
     }
     .toggle-instructions {
       display: block;
       text-align: center;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       font-size: 12px;
-      color: #0070f3;
+      color: #555;
       cursor: pointer;
       user-select: none;
     }
     .instructions {
       font-size: 12px;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       display: none;
       line-height: 1.4;
+      color: #444;
     }
     textarea {
       width: 100%;
       height: 100px;
       font-size: 12px;
       box-sizing: border-box;
+      border: 1px solid #aaa;
+      border-radius: 2px;
+      background: #fafafa;
+      padding: 4px;
+      color: #333;
+      font-family: monospace;
     }
     .button-group {
       display: flex;
       justify-content: space-between;
-      margin-top: 5px;
+      margin-top: 8px;
     }
     button {
-      background-color: #0070f3;
-      color: #fff;
-      border: none;
+      background-color: #eee;
+      color: #333;
+      border: 1px solid #aaa;
       padding: 4px 8px;
       font-size: 12px;
       border-radius: 2px;
       cursor: pointer;
+      font-weight: normal;
     }
     button:hover {
-      background-color: #005bb5;
+      background-color: #ddd;
     }
     .info {
       font-size: 10px;
-      color: #555;
+      color: #666;
       margin-top: 5px;
       text-align: center;
+    }
+    pre {
+      background: #f9f9f9; 
+      border: 1px solid #ddd; 
+      padding: 4px; 
+      border-radius: 2px; 
+      font-size: 10px;
+      color: #111;
+    }
+    .instructions pre {
+      margin-top: 4px;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>ALL_Task アップローダー</h1>
-    <div class="toggle-instructions" id="toggleBtn">▼ 詳細</div>
+    <div class="toggle-instructions" id="toggleBtn">▼ 詳細を表示</div>
     <div class="instructions" id="instructions">
-      JSON形式のデータを下のテキストボックスに貼り付けて、「送信」でNotionデータベースに登録します。<br>
-      例：
-      <pre style="font-size:10px; background:#f0f0f0; padding:2px; border-radius:2px;">
-[
+      <p>JSON形式のデータを下のテキストエリアに貼り付け、「送信」でNotionに登録します。</p>
+      <p>例：</p>
+      <pre>[
   {
     "ALL_Task": "今日やること1",
     "状態": "★今日のメイン★",
@@ -89,10 +111,9 @@
     "memo": "メモ例",
     "リソース": 3
   }
-]
-      </pre>
+]</pre>
     </div>
-    <textarea id="jsonInput" placeholder='[{"ALL_Task":"タスク名",...}]'></textarea>
+    <textarea id="jsonInput" placeholder='[{"ALL_Task":"タスク名", ...}]'></textarea>
     <div class="button-group">
       <button id="clearBtn">クリア</button>
       <button id="submitBtn">送信</button>

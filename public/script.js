@@ -1,11 +1,12 @@
 document.getElementById('toggleBtn').addEventListener('click', () => {
     const instructions = document.getElementById('instructions');
+    const toggleBtn = document.getElementById('toggleBtn');
     if (instructions.style.display === 'none' || instructions.style.display === '') {
       instructions.style.display = 'block';
-      document.getElementById('toggleBtn').textContent = '▲ 閉じる';
+      toggleBtn.textContent = '▲ 詳細を閉じる';
     } else {
       instructions.style.display = 'none';
-      document.getElementById('toggleBtn').textContent = '▼ 詳細';
+      toggleBtn.textContent = '▼ 詳細を表示';
     }
   });
   
