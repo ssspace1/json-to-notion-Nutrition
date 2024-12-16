@@ -1,31 +1,40 @@
 {
-    "properties": {
-      "ALL_Task": {
-        "type": "title",
-        "notionPropertyName": "ALL_Task"
-      },
-      "状態": {
-        "type": "select",
-        "notionPropertyName": "状態",
-        "options": ["★今日のメイン★","完了済み","未着手","進行中","本日中対応"]
-      },
-      "Priority": {
-        "type": "select",
-        "notionPropertyName": "Priority",
-        "options": ["★","★★★","★★★★★","★★★★★★★","-----"]
-      },
-      "日付": {
-        "type": "date",
-        "notionPropertyName": "日付"
-      },
-      "memo": {
-        "type": "rich_text",
-        "notionPropertyName": "memo"
-      },
-      "リソース": {
-        "type": "number",
-        "notionPropertyName": "リソース"
-      }
+  "properties": {
+    "Name": {
+      "type": "title",
+      "notionPropertyName": "Name"
+    },
+    "Meal Type": {
+      "type": "select",
+      "notionPropertyName": "Meal Type",
+      "options": [
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Snack",
+        "Dessert",
+        "Drink"
+      ]
+    },
+    "Calories": {
+      "type": "number",
+      "notionPropertyName": "Calories"
+    },
+    "Proteins": {
+      "type": "number",
+      "notionPropertyName": "Proteins"
+    },
+    "Fat": {
+      "type": "number",
+      "notionPropertyName": "Fat"
+    },
+    "Carbs": {
+      "type": "number",
+      "notionPropertyName": "Carbs"
+    },
+    "日付": {
+      "type": "date",
+      "notionPropertyName": "日付"
     }
   }
-  
+}
