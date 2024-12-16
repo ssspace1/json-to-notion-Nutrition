@@ -10,6 +10,7 @@ document.getElementById('toggleBtn').addEventListener('click', () => {
     }
   });
   
+  
   document.getElementById('clearBtn').addEventListener('click', () => {
     document.getElementById('jsonInput').value = '';
   });
