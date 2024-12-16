@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ALL_Task アップローダー</title>
+  <title>json-to-notion</title>
   <style>
     body {
       margin: 0;
@@ -103,23 +103,23 @@
 </head>
 <body>
   <div class="container">
-    <h1>ALL_Task アップローダー</h1>
+    <h1>json-to-notion</h1>
     <div class="toggle-instructions" id="toggleBtn">▼ 詳細を表示</div>
     <div class="instructions" id="instructions">
       <p>JSON形式のデータを下のテキストエリアに貼り付け、「送信」でNotionに登録します。</p>
       <p>例：</p>
       <pre>[
   {
-    "ALL_Task": "今日やること1",
-    "状態": "★今日のメイン★",
+    "Task": "今日やること1",
+    "Status": "★今日のメイン★",
     "Priority": "★★★★★",
-    "日付": "2024-12-16",
-    "memo": "メモ例",
-    "リソース": 3
+    "Due": "2024-12-16",
+    "Note": "メモ例",
+    "Fuel": 30
   }
 ]</pre>
     </div>
-    <textarea id="jsonInput" placeholder='[{"ALL_Task":"タスク名", ...}]'></textarea>
+    <textarea id="jsonInput" placeholder='[{"json-to-notion":"タスク名", ...}]'></textarea>
     <div class="button-group">
       <button id="clearBtn">クリア</button>
       <button id="submitBtn">送信</button>
